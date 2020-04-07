@@ -80,7 +80,7 @@ static Synth *shared = nil;
                 float tempSignal = self.signal(self.time);
                 self.time += self.deltaTime;
                 
-                for (NSInteger nBuffer = 0; i < outputData->mNumberBuffers; i++) {
+                for (NSInteger nBuffer = 0; nBuffer < outputData->mNumberBuffers; nBuffer++) {
                     Float32 *buffer = (Float32 *)outputData->mBuffers[nBuffer].mData;
                     buffer[i] = tempSignal;
                 }
@@ -98,25 +98,6 @@ static Synth *shared = nil;
 - (float)volume {
     return self.audioEngine.mainMixerNode.outputVolume;
 }
-
-//- (void)init {
-//    self = [super init];
-//    self = [self initWithSignal:nil];
-//}
-
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//        if (signals == nil){
-//        return  [self initClass: [OscillatorObj sine]];
-//
-//        }
-//        else{
-//            return  [self initClass: signals];
-//        }
-//    }
-//    return self;
-//}
 
 - (void)setWaveformTo:(Signal)signal {
     self.signal = signal;

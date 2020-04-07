@@ -71,6 +71,8 @@ class SynthViewController: UIViewController {
             case .sawtooth: Synth.shared.setWaveformTo(Oscillator.sawtooth)
             case .square: Synth.shared.setWaveformTo(Oscillator.square)
             case .whiteNoise: Synth.shared.setWaveformTo(Oscillator.whiteNoise)
+        @unknown default:
+            fatalError()
         }
     }
     

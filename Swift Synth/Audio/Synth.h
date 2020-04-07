@@ -12,12 +12,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Synth : NSObject
-
-+ (instancetype)sharedInstance;
+//+ (instancetype)shared;
+@property (class, readonly) Synth *shared;
 
 @property (atomic) float volume;
 
-- (void)setWaveformToSignal:(Signal)signal;
+- (void)setWaveformTo:(Signal)signal;
 
 @end
 

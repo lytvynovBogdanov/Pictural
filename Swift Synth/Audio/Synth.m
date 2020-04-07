@@ -14,6 +14,8 @@
 
 @interface Synth()
 
+//@property (class, readwrite) Synth *shared;
+
 @property (strong, nonatomic) AVAudioEngine *audioEngine;
 @property (strong, nonatomic) AVAudioSourceNode *sourceNode;
 
@@ -26,13 +28,46 @@
 
 @implementation Synth
 
-+ (instancetype)sharedInstance {
-    static Synth *sharedInstance = nil;
+static Synth *shared = nil;
++ (instancetype)shared {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[Synth alloc] init];
+        shared = [[Synth alloc] initWithSignal:nil];
     });
-    return sharedInstance;
+    return shared;
+}
+
+- (instancetype)initWithSignal:(Signal)signal {
+    if (signal == nil) {
+        signal = Oscillator.sine;
+    }
+
+    self.audioEngine = [[AVAudioEngine alloc] init];
+    AVAudioMixerNode *mainMixer = self.audioEngine.mainMixerNode;
+    AVAudioOutputNode *outputNode = self.audioEngine.outputNode;
+    AVAudioFormat *format = [outputNode inputFormatForBus:0];
+    
+    self.sampleRate = format.sampleRate;
+    self.deltaTime = 1.0 / self.sampleRate;
+    self.signal = signal;
+    
+    AVAudioFormat *inputFormat =
+    [[AVAudioFormat alloc] initWithCommonFormat:format.commonFormat
+                                     sampleRate:self.sampleRate channels:1
+                                    interleaved:format.isInterleaved];
+    
+    [self.audioEngine attachNode:self.sourceNode];
+    [self.audioEngine connect:self.sourceNode to:mainMixer format:inputFormat];
+    [self.audioEngine connect:mainMixer to:outputNode format:nil];
+    mainMixer.outputVolume = 0;
+    
+    NSError *error;
+    @try {
+        [self.audioEngine startAndReturnError:&error];
+    } @catch (NSException* e) {
+        NSLog(@"Could not start audioEngine: %@", error.localizedDescription);
+    }
+    return self;
 }
 
 - (AVAudioSourceNode *)sourceNode {
@@ -64,40 +99,26 @@
     return self.audioEngine.mainMixerNode.outputVolume;
 }
 
-- (void)initWithSignal:(Signal)signal {
-    if (signal == nil) {
-        // TODO: default value
-        //Signal = Oscillator.sine
-    }
+//- (void)init {
+//    self = [super init];
+//    self = [self initWithSignal:nil];
+//}
 
-    AVAudioEngine *audioEngine = [[AVAudioEngine alloc] init];
-    AVAudioMixerNode *mainMixer = self.audioEngine.mainMixerNode;
-    AVAudioOutputNode *outputNode = self.audioEngine.outputNode;
-    AVAudioFormat *format = [outputNode inputFormatForBus:0];
-    
-    self.sampleRate = format.sampleRate;
-    self.deltaTime = 1 / self.sampleRate;
-    self.signal = signal;
-    
-    AVAudioFormat *inputFormat =
-    [[AVAudioFormat alloc] initWithCommonFormat:format.commonFormat
-                                     sampleRate:self.sampleRate channels:1
-                                    interleaved:format.isInterleaved];
-    
-    [audioEngine attachNode:self.sourceNode];
-    [audioEngine connect:self.sourceNode to:mainMixer format:inputFormat];
-    [audioEngine connect:mainMixer to:outputNode format:nil];
-    mainMixer.outputVolume = 0;
-    
-    NSError *error;
-    @try {
-        [audioEngine startAndReturnError:&error];
-    } @catch (NSException* e) {
-        NSLog(@"Could not start audioEngine: %@", error.localizedDescription);
-    }
-}
+//- (instancetype)init {
+//    self = [super init];
+//    if (self) {
+//        if (signals == nil){
+//        return  [self initClass: [OscillatorObj sine]];
+//
+//        }
+//        else{
+//            return  [self initClass: signals];
+//        }
+//    }
+//    return self;
+//}
 
-- (void)setWaveformToSignal:(Signal)signal {
+- (void)setWaveformTo:(Signal)signal {
     self.signal = signal;
 }
 

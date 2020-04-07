@@ -10,17 +10,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, Waveform) {
-    sine = 1,
-    triangle = 2,
-    sawtooth = 3,
-    square = 4,
-    whiteNoise = 5
+typedef NS_ENUM(NSInteger, Waveform) {
+    sine = 0,
+    triangle = 1,
+    sawtooth = 2,
+    square = 3,
+    whiteNoise = 4
 };
 
 typedef float (^Signal) (float signal);
 
 @interface Oscillator : NSObject
+
+@property (class) float amplitude;
+@property (class) float frequency;
+@property (class, readonly) Signal sine;
+@property (class, readonly) Signal triangle;
+@property (class, readonly) Signal sawtooth;
+@property (class, readonly) Signal square;
+@property (class, readonly) Signal whiteNoise;
 
 @end
 

@@ -8,27 +8,30 @@
 
 #import "Oscillator.h"
 
+@interface Oscillator()
+@end
+
 @implementation Oscillator
 
 static float amplitude = 1.0f;
-+ (int)amplitude {
++ (float)amplitude {
     @synchronized(self) {
         return amplitude;
     }
 }
-+ (void)setAmplitude:(int)value {
++ (void)setAmplitude:(float)value {
     @synchronized(self) {
         amplitude = value;
     }
 }
 
 static float frequency = 440.0f;
-+ (int)frequency {
++ (float)frequency {
     @synchronized(self) {
         return frequency;
     }
 }
-+ (void)setFrequency:(int)value {
++ (void)setFrequency:(float)value {
     @synchronized(self) {
         frequency = value;
     }
@@ -36,7 +39,7 @@ static float frequency = 440.0f;
 
 + (Signal)sine {
     return ^(float time) {
-        return Oscillator.amplitude * (float)sin(2.0 * M_PI * Oscillator.frequency * time);
+        return (float)(Oscillator.amplitude * sin(2.0 * M_PI * Oscillator.frequency * time));
     };
 }
 

@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Synth : NSObject
 
++ (instancetype)sharedInstance;
+
+@property (atomic) float volume;
+
+- (void)setWaveformToSignal:(float(^)(float))signal;
+
 @end
 
 NS_ASSUME_NONNULL_END

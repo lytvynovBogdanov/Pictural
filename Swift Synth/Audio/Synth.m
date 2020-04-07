@@ -10,4 +10,13 @@
 
 @implementation Synth
 
++ (instancetype)sharedInstance {
+    static Synth *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[Synth alloc] init];
+    });
+    return sharedInstance;
+}
+
 @end

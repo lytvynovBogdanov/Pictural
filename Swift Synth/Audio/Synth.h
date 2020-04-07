@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, readonly) Synth *shared;
 
 @property (atomic) float volume;
+@property (nonatomic, readonly) BOOL isPlaying;
 
 - (void)setWaveformTo:(Signal)signal;
 

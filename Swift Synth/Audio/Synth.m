@@ -73,7 +73,6 @@ static Synth *shared = nil;
         weakify(self)
         _sourceNode = [[AVAudioSourceNode alloc] initWithRenderBlock:^OSStatus(BOOL * _Nonnull isSilence, const AudioTimeStamp * _Nonnull timestamp, AVAudioFrameCount frameCount, AudioBufferList * _Nonnull outputData) {
             strongify(self)
-            
             for (NSInteger i = 0; i < frameCount; i++) {
                 float tempSignal = self.signal(self.time);
                 self.time += self.deltaTime;
@@ -99,6 +98,10 @@ static Synth *shared = nil;
 
 - (void)setWaveformTo:(Signal)signal {
     self.signal = signal;
+}
+
+- (BOOL)isPlaying {
+    return self.audioEngine.mainMixerNode.outputVolume > 0;
 }
 
 @end

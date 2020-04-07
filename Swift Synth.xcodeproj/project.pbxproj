@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495CEA88243C78BC00B387C9 /* Synth.m in Sources */ = {isa = PBXBuildFile; fileRef = 495CEA87243C78BC00B387C9 /* Synth.m */; };
+		495CEA8B243C78CD00B387C9 /* Oscillator.m in Sources */ = {isa = PBXBuildFile; fileRef = 495CEA8A243C78CD00B387C9 /* Oscillator.m */; };
 		550D024222E526DD002C57C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D024122E526DD002C57C9 /* AppDelegate.swift */; };
 		550D024422E526DD002C57C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D024322E526DD002C57C9 /* SceneDelegate.swift */; };
 		550D024622E526DD002C57C9 /* SynthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D024522E526DD002C57C9 /* SynthViewController.swift */; };
@@ -20,6 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		495CEA86243C78BC00B387C9 /* Synth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Synth.h; sourceTree = "<group>"; };
+		495CEA87243C78BC00B387C9 /* Synth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Synth.m; sourceTree = "<group>"; };
+		495CEA89243C78CD00B387C9 /* Oscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
+		495CEA8A243C78CD00B387C9 /* Oscillator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
+		495CEA8E243C793700B387C9 /* Swift Synth-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift Synth-Bridging-Header.h"; sourceTree = "<group>"; };
 		550D023E22E526DD002C57C9 /* Swift Synth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Synth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		550D024122E526DD002C57C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		550D024322E526DD002C57C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		495CEA8D243C793700B387C9 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				495CEA8E243C793700B387C9 /* Swift Synth-Bridging-Header.h */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		550D023522E526DD002C57C9 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +82,7 @@
 			children = (
 				550D024122E526DD002C57C9 /* AppDelegate.swift */,
 				550D024322E526DD002C57C9 /* SceneDelegate.swift */,
+				495CEA8D243C793700B387C9 /* Resourses */,
 				550D025922E556AB002C57C9 /* Controllers */,
 				550D025A22E556BA002C57C9 /* Audio */,
 				550D025B22E556C0002C57C9 /* Extensions */,
@@ -90,6 +106,10 @@
 			children = (
 				550D025722E55477002C57C9 /* Synth.swift */,
 				550D025D22E557A5002C57C9 /* Oscillator.swift */,
+				495CEA86243C78BC00B387C9 /* Synth.h */,
+				495CEA87243C78BC00B387C9 /* Synth.m */,
+				495CEA89243C78CD00B387C9 /* Oscillator.h */,
+				495CEA8A243C78CD00B387C9 /* Oscillator.m */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -151,6 +171,7 @@
 				TargetAttributes = {
 					550D023D22E526DD002C57C9 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -190,10 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495CEA88243C78BC00B387C9 /* Synth.m in Sources */,
 				55FB1E6322EE0B8700AED3D2 /* UIColor+Set.swift in Sources */,
 				550D025622E53233002C57C9 /* UIView+Add.swift in Sources */,
 				550D024622E526DD002C57C9 /* SynthViewController.swift in Sources */,
 				550D024222E526DD002C57C9 /* AppDelegate.swift in Sources */,
+				495CEA8B243C78CD00B387C9 /* Oscillator.m in Sources */,
 				550D025E22E557A5002C57C9 /* Oscillator.swift in Sources */,
 				550D025822E55477002C57C9 /* Synth.swift in Sources */,
 				550D024422E526DD002C57C9 /* SceneDelegate.swift in Sources */,
@@ -332,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = URG8NKU79W;
 				INFOPLIST_FILE = "Swift Synth/Info.plist";
@@ -341,6 +365,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift Synth/Resourses/Swift Synth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -350,6 +376,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = URG8NKU79W;
 				INFOPLIST_FILE = "Swift Synth/Info.plist";
@@ -359,6 +386,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pictural.ai.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Swift Synth/Resourses/Swift Synth-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

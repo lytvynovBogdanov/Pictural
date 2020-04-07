@@ -105,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				550D025722E55477002C57C9 /* Synth.swift */,
-				550D025D22E557A5002C57C9 /* Oscillator.swift */,
 				495CEA86243C78BC00B387C9 /* Synth.h */,
 				495CEA87243C78BC00B387C9 /* Synth.m */,
+				550D025D22E557A5002C57C9 /* Oscillator.swift */,
 				495CEA89243C78CD00B387C9 /* Oscillator.h */,
 				495CEA8A243C78CD00B387C9 /* Oscillator.m */,
 			);

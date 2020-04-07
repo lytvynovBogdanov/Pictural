@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, Waveform) {
+    kSine = 1,
+    kTriangle = 2,
+    kSawtooth = 3,
+    kSquare = 4,
+    kWhiteNoise = 5
+};
+
 @interface Oscillator : NSObject
 
 @end

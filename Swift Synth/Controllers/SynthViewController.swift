@@ -11,6 +11,17 @@ class SynthViewController: UIViewController {
 
 		return label
     }()
+    
+    private lazy var audioPlayingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        Synth.shared.stateChanged = { isPlaying in
+            label.text = isPlaying ? "Playing..." : ""
+        }
+
+        return label
+    }()
         
     private lazy var waveformSelectorSegmentedControl: UISegmentedControl = {
         var images = [#imageLiteral(resourceName: "Sine Wave Icon"), #imageLiteral(resourceName: "Triangle Wave Icon"), #imageLiteral(resourceName: "Sawtooth Wave Icon"), #imageLiteral(resourceName: "Square Wave Icon"), #imageLiteral(resourceName: "Noise Wave Icon")]
@@ -86,7 +97,7 @@ class SynthViewController: UIViewController {
     }
     
     private func setUpSubviews() {
-        view.add(waveformSelectorSegmentedControl, parameterLabel)
+        view.add(waveformSelectorSegmentedControl, parameterLabel, audioPlayingLabel)
         
         NSLayoutConstraint.activate([
             waveformSelectorSegmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -94,7 +105,10 @@ class SynthViewController: UIViewController {
             waveformSelectorSegmentedControl.widthAnchor.constraint(equalToConstant: 250),
             
             parameterLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor)
+            parameterLabel.centerYAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerYAnchor),
+            
+            audioPlayingLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+            audioPlayingLabel.centerXAnchor.constraint(equalTo: waveformSelectorSegmentedControl.centerXAnchor)
         ])
     }
     

@@ -68,6 +68,28 @@ static Synth *shared = nil;
     return self;
 }
 
+- (void)setAudioEngine:(AVAudioEngine *)audioEngine {
+    if (_audioEngine == audioEngine) {
+        return;
+    }
+    _audioEngine = audioEngine;
+    [_audioEngine.mainMixerNode addObserver:self
+                                 forKeyPath:@"outputVolume" options:NSKeyValueObservingOptionNew
+                                    context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                  ofObject:(id)object
+                    change:(NSDictionary *)change
+                   context:(void *)context {
+
+    if ([keyPath isEqualToString:@"outputVolume"]) {
+        if (self.stateChanged != nil) {
+            self.stateChanged(self.isPlaying);
+        }
+    }
+}
+
 - (AVAudioSourceNode *)sourceNode {
     if (_sourceNode == nil) {
         weakify(self)

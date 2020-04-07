@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setWaveformTo:(Signal)signal;
 
+@property (strong, nonatomic) void (^stateChanged)(BOOL);
+
 @end
 
 NS_ASSUME_NONNULL_END

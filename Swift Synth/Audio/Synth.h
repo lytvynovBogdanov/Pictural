@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Synth : NSObject
-//+ (instancetype)shared;
+
 @property (class, readonly) Synth *shared;
 
 @property (atomic) float volume;

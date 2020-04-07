@@ -79,7 +79,8 @@ static float frequency = 440.0f;
 
 + (Signal)whiteNoise {
     return ^(float time) {
-        return Oscillator.amplitude * (float)((arc4random() % 2) - 1);
+        float randomValue = arc4random() % 2 > 0 ? 1.0 : -1.0;
+        return Oscillator.amplitude * randomValue;
     };
 }
 

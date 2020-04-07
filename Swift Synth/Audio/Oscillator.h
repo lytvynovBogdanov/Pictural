@@ -24,6 +24,7 @@ typedef float (^Signal) (float signal);
 
 @property (class) float amplitude;
 @property (class) float frequency;
+
 @property (class, readonly) Signal sine;
 @property (class, readonly) Signal triangle;
 @property (class, readonly) Signal sawtooth;

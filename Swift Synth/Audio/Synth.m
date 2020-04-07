@@ -14,8 +14,6 @@
 
 @interface Synth()
 
-//@property (class, readwrite) Synth *shared;
-
 @property (strong, nonatomic) AVAudioEngine *audioEngine;
 @property (strong, nonatomic) AVAudioSourceNode *sourceNode;
 

@@ -18,6 +18,9 @@ typedef NS_ENUM(NSUInteger, Waveform) {
     kWhiteNoise = 5
 };
 
+typedef float (^Signal) (float signal);
+
+
 @interface Oscillator : NSObject
 
 @end

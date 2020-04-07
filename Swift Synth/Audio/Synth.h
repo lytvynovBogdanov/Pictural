@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Oscillator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (atomic) float volume;
 
-- (void)setWaveformToSignal:(float(^)(float))signal;
+- (void)setWaveformToSignal:(Signal)signal;
 
 @end
 

@@ -27,6 +27,7 @@
 		495CEA89243C78CD00B387C9 /* Oscillator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oscillator.h; sourceTree = "<group>"; };
 		495CEA8A243C78CD00B387C9 /* Oscillator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Oscillator.m; sourceTree = "<group>"; };
 		495CEA8E243C793700B387C9 /* Swift Synth-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swift Synth-Bridging-Header.h"; sourceTree = "<group>"; };
+		495CEA8F243C836100B387C9 /* WeakInstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeakInstance.h; sourceTree = "<group>"; };
 		550D023E22E526DD002C57C9 /* Swift Synth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Synth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		550D024122E526DD002C57C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		550D024322E526DD002C57C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				495CEA8E243C793700B387C9 /* Swift Synth-Bridging-Header.h */,
+				495CEA8F243C836100B387C9 /* WeakInstance.h */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";

@@ -10,4 +10,7 @@
 
 @implementation Oscillator
 
+static float amplitude = 1.0f;
+static float frequency = 440.0f;
+
 @end

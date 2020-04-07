@@ -11,15 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, Waveform) {
-    kSine = 1,
-    kTriangle = 2,
-    kSawtooth = 3,
-    kSquare = 4,
-    kWhiteNoise = 5
+    sine = 1,
+    triangle = 2,
+    sawtooth = 3,
+    square = 4,
+    whiteNoise = 5
 };
 
 typedef float (^Signal) (float signal);
-
 
 @interface Oscillator : NSObject
 
